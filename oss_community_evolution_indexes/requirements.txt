@@ -1,0 +1,12 @@
+scipy
+seaborn
+pymongo
+matplotlib
+networkx
+tqdm
+pyecharts
+pandas
+numpy
+scikit-learn
+statsmodels
+snapshot-phantomjs

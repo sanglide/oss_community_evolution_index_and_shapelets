@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b8975bbb-9dca-42c5-ba75-7460719a0d7d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/compare_experiment_resolution.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generateNet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generateUndefined.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main_resolution_experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/oss_community_evolution_indexes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oss_community_evolution_indexes.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/rAvailablePackageCache.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/rGraphicsSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/rMarkdownGraphicsSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/rSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RScript/productivity_analysis.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/RScript/productivity_analysis.Rmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analyze_indexes.py" beforeDir="false" afterPath="$PROJECT_DIR$/analyze_indexes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/community_detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ReadMe.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/chosenProjData.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projCommit.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolution_patterns.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolution_patterns.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/global_settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_calculate_indexes.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_calculate_indexes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj_list/704/all_704-8_sbh_select.list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj_list/704/selectedActiveList.list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj_list/704/selectedFailedList.list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj_list/704/新建文件夹/704_file_missing.list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj_list/704/新建文件夹/704_file_missing.list.backup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj_list/704/新建文件夹/all_704-10_wl_select.list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj_list/704/新建文件夹/all_704_origin.list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proj_list/ReadMe.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/terminated" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2cJWY8gTtLZQs1YLAJ7NBQEbemF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b8975bbb-9dca-42c5-ba75-7460719a0d7d" name="Default Changelist" comment="" />
+      <created>1707830217640</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707830217640</updated>
+      <workItem from="1707830226849" duration="471000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

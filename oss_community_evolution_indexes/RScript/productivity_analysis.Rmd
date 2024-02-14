@@ -1,0 +1,157 @@
+## Setting up Packages
+#knitr::opts_chunk$set(echo = TRUE)
+```{r library}
+library("lme4")         # for the analysis
+library("lmerTest")     # to get p-value estimations
+library("performance")
+library("car")
+library("MASS")
+
+library("dplyr")
+library("tidyverse")    # needed for data manipulation
+library("knitr")
+library("stringr")
+library("pscl")
+library("sjstats")
+library("emmeans")      # for interaction analysis
+library("ggplot2")
+library("magrittr")
+```
+
+```{r preprocess}
+## preparing data
+## table_data<-read.table("../result/2022-05-12T00-27-25Z_interval_7_days_x_12_论文标准结果/index_productivity.csv",head=T,sep=',',stringsAsFactors = FALSE )
+## table_data<-index_productivity_696_200projects_新选择的_commit_t.1
+ 
+table_data<-index_productivity_fuxian_commit_t.3
+
+print(table_data)
+# tmp_data1 <- table_data %>% mutate(
+#   split = scale(split+0.5),
+#   shrink = scale(shrink+0.5),
+#   merge =scale( merge+0.5),
+#   expand =scale( expand+0.5),
+#   commit_count =scale(commit_count+0.5),
+#   commit_count_before=scale(commit_count_before+0.5),
+# )
+tmp_data1 <- table_data %>% mutate(
+  split = split+0.5,
+  shrink =shrink+0.5,
+  merge = merge+0.5,
+  expand =expand+0.5,
+  commit_count =commit_count+0.5,
+  commit_count_before=commit_count_before+0.5,
+)
+
+# perform log transformation, follow [1].
+# [1] Zhixing Li, Yue Yu, Minghui Zhou, Tao Wang, Gang Yin, Long Lan, and HuaiminWang. 2020. Redundancy, context, and preference: An empirical study of dupli-cate pull requests in OSS projects.IEEE Transactions on Software Engineering(2020).
+
+# tmp_data <- table_data %>% mutate(
+#   split = log(split+1.5),
+#   shrink = log(shrink+1.5),
+#   merge = log(merge+1.5),
+#   expand = log(expand+1.5),
+#   commit_count =log(commit_count+1.5),
+#   commit_count_before=log(commit_count_before+1.5),
+# )
+
+tmp_data <- table_data %>% mutate(
+  split = scale(log(split+0.5)),
+  shrink = scale(log(shrink+0.5)),
+  merge = scale(log(merge+0.5)),
+  expand = scale(log(expand+0.5)),
+  commit_count =scale(log(commit_count+0.5)),
+  commit_count_before=scale(log(commit_count_before+0.5)),
+  commit_count_diff=scale(log(commit_count_diff+0.5)),
+  commit_diff_count_before=scale(log(commit_diff_count_before+0.5)),
+  member_count=scale(log(member_count)+0.5)
+)
+print(tmp_data)
+```
+
+```{r useful functions}
+verify_lmer <- function(c_model) {
+  
+  print(vif(c_model)) # check for colinearty, values below 5 are recommended
+  print(check_normality(c_model)) # check normality of the residuals 
+  print(check_heteroscedasticity(c_model)) # check heteroscedasticity of the residuals 
+  print(summary(c_model))
+  print(model_performance(c_model))
+  print(performance_accuracy(c_model))
+  print(performance::icc(c_model))
+  print(anova(c_model))
+  print(ranova(c_model))
+
+  plot(fitted(c_model), resid(c_model, type = "pearson"))
+  abline(0, 0, col = "red")
+  qqnorm(resid(c_model),cex=.3)
+  qqline(resid(c_model), col = "red")
+}
+```
+
+```{r}
+
+
+b <- boxcox(commit_count ~ split + shrink + merge +commit_count_before+ expand, data = tmp_data1)
+lambda <- b$x
+lik <- b$y
+bc <- cbind(lambda, lik)
+I=which(b$y==max(b$y))
+b$x[I]
+
+bc[order(-lik),]
+
+
+
+```
+```{r}
+
+print("-------------------model1  ------------------------")
+
+c_model_1 <- lmer(formula = commit_count ~ split + shrink + merge + expand+ (1 | project_name), data = tmp_data)
+
+verify_lmer(c_model_1)
+
+print("-------------------model2  ------------------------")
+c_model_2 <- lm(formula = commit_count ~ split + shrink + merge + expand, data = tmp_data)
+summary(c_model_2)
+print(anova(c_model_2))
+print(model_performance(c_model_2))
+print(performance_accuracy(c_model_2))
+print(anova(c_model_2))
+plot(fitted(c_model_2), resid(c_model_2, type = "pearson"))
+abline(0, 0, col = "red")
+qqnorm(resid(c_model_2),cex=.3)
+qqline(resid(c_model_2), col = "red")
+
+print("-------------------model3  ------------------------")
+c_model_3 <- lmer(formula = commit_count ~ split + shrink + merge +commit_count_before+ expand+ (1 | project_name), data = tmp_data)
+verify_lmer(c_model_3)
+
+
+print("-------------------model4  ------------------------")
+c_model_4 <- lmer(formula = commit_count^0.95 ~ split + shrink + merge +commit_count_before+ expand+ (1 | project_name), data = tmp_data1)
+summary(c_model_4)
+print(model_performance(c_model_4))
+print(performance_accuracy(c_model_4))
+print(anova(c_model_4))
+plot(fitted(c_model_4), resid(c_model_4, type = "pearson"))
+abline(0, 0, col = "red")
+qqnorm(resid(c_model_4),cex=.3)
+qqline(resid(c_model_4), col = "red")
+
+print("-------------------model5  ------------------------")
+c_model_5 <- lmer(formula = commit_count ~ split + shrink + merge+ expand+commit_diff_count_before+ (1 | project_name), data = tmp_data)
+verify_lmer(c_model_5)
+
+print("-------------------model6  ------------------------")
+c_model_6 <- lmer(formula = commit_count_diff ~ split + shrink + merge +commit_diff_count_before+ expand+ (1 | project_name), data = tmp_data)
+verify_lmer(c_model_6)
+
+
+
+
+
+
+
+```
