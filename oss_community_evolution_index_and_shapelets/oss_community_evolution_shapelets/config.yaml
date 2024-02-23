@@ -1,6 +1,0 @@
-local_repo_path: "/home/wangliang/workspace/data/zjr_data/" # local data path
-black_duration: 12 # months between last commit and data retrival time
-blue_duration: 6 # months of forcast before last commit
-green_duration: 12 # months of data used for extracting and mathcing shapelets before the start of blue duration
-
-
