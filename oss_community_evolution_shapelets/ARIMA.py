@@ -20,7 +20,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, confusion_matrix, precision_score, roc_curve
 
 
-class ARMA:
+class ARIMA:
 
     def __init__(self):
         # Download data
@@ -41,7 +41,7 @@ class ARMA:
     def __check_stat(self,value,file_preix):
         # Plot original data
         self.__df[value].plot(legend=False, title='Original Data')
-        pyplot.savefig(f"./ARMA/{file_preix}-original-data.png")
+        pyplot.savefig(f"./ARIMA/{file_preix}-original-data.png")
 
         # Apply Augmented Dickey-Fuller Test to original data
         adf_result_before_differencing = adfuller(self.__df[value])
@@ -68,7 +68,7 @@ class ARMA:
         # Plot differenced data
         self.__index_diff_values.plot(legend=False, title='Differenced data',
                                       color='green')
-        pyplot.savefig(f"./ARMA/{file_preix}-differenced-data.png")
+        pyplot.savefig(f"./ARIMA/{file_preix}-differenced-data.png")
         pyplot.close('all')
 
 
@@ -88,12 +88,12 @@ class ARMA:
         # Plot ACF
         tsaplots.plot_acf(self.__index_diff_values)
         # tsaplots.plot_acf(self.__index_diff_values, lags=50)
-        pyplot.savefig(f"./ARMA/{file_preix}-acf-data.png")
+        pyplot.savefig(f"./ARIMA/{file_preix}-acf-data.png")
 
         # Plot PACF
         tsaplots.plot_pacf(self.__index_diff_values)
         # tsaplots.plot_pacf(self.__index_diff_values, lags=50)
-        pyplot.savefig(f"./ARMA/{file_preix}-pac-data.png")
+        pyplot.savefig(f"./ARIMA/{file_preix}-pac-data.png")
         pyplot.close('all')
 
     # def __chekc_forcast(self,value,file_preix):
@@ -111,13 +111,13 @@ class ARMA:
     #
     #     self.__df['predicted'] = self.__in_sample_predicted_values
     #
-    #     self.__df.to_csv(f"./ARMA/{file_preix}.csv")
+    #     self.__df.to_csv(f"./ARIMA/{file_preix}.csv")
     #
     #     # self.__df.columns = ['actual', 'predicted']
     #     df_plot=self.__df[[value, 'predicted']]
     #
     #     df_plot.plot()
-    #     pyplot.savefig(f"./ARMA/{file_preix}-prediction-data.png")
+    #     pyplot.savefig(f"./ARIMA/{file_preix}-prediction-data.png")
     #     pyplot.close('all')
     # def multiple_forecast(self,value,file_preix,step=48):
     #     # df=pd.Series(self.__df[value])
@@ -133,7 +133,7 @@ class ARMA:
     #     df_plott = self.__df_origin[[value, 'predicted_multi']]
     #
     #     df_plott.plot()
-    #     pyplot.savefig(f"./ARMA/{file_preix}-prediction-data2.png")
+    #     pyplot.savefig(f"./ARIMA/{file_preix}-prediction-data2.png")
     #     pyplot.close('all')
     #
     #     return valuee
@@ -157,13 +157,13 @@ class ARMA:
         value_before.extend(prediction_value[:(len(self.__df_origin)-len(value_before))])
 
         self.__df_origin['predicted_multi'] = value_before
-        self.__df_origin.to_csv(f"./ARMA/{file_preix}.csv")
+        self.__df_origin.to_csv(f"./ARIMA/{file_preix}.csv")
 
         df_plott = self.__df_origin[[value, 'predicted_multi']]
 
         df_plott.plot()
         pyplot.axvline(x=self.__df_origin.iloc[len(self.__df)-1].name, ls="-.", c="red")  # 添加垂直直线
-        pyplot.savefig(f"./ARMA/{file_preix}-prediction-data2.png")
+        pyplot.savefig(f"./ARIMA/{file_preix}-prediction-data2.png")
         pyplot.close('all')
 
     def get_differencies(self):
@@ -252,7 +252,7 @@ def prediction_preprocess(directory,data_period_month,forecast_gap_month,label_p
         label_true.append(l)
         label_test.append(ll)
 
-    print(f"======================= ARMA prediction {len(label_true)} ===============================")
+    print(f"======================= ARIMA prediction {len(label_true)} ===============================")
     print(label_true)
     print(label_test)
     print(precision_score(label_true,label_test))
@@ -307,7 +307,7 @@ if __name__ == "__main__":
     print(f'------------- sample shape : {len(df_sample)} --------------')
     count=0
 
-    arma = ARMA()
+    ARIMA = ARIMA()
 
 
     # re=[]
@@ -349,15 +349,15 @@ if __name__ == "__main__":
 
 
 
-                arma.set_attribute(df_repo0,df_origin)
-                # arma.set_attribute(sample,sample)
+                ARIMA.set_attribute(df_repo0,df_origin)
+                # ARIMA.set_attribute(sample,sample)
 
-                arma.main("commit_count",df_repo_list[count].replace("/","__"),step)
-                # arma.multiple_forecast("commit_count",df_repo_list[count].replace("/","-"),step=48)
+                ARIMA.main("commit_count",df_repo_list[count].replace("/","__"),step)
+                # ARIMA.multiple_forecast("commit_count",df_repo_list[count].replace("/","-"),step=48)
 
-                # a = arma.get_actual()
+                # a = ARIMA.get_actual()
                 #
-                # b = arma.get_predicted()
+                # b = ARIMA.get_predicted()
 
 
             # re.append(re_temp)
@@ -371,4 +371,4 @@ if __name__ == "__main__":
     # forecast_gap_month_list = [3 * 4,24,36,48,60,72,84,96]
     forecast_gap_month = 3 * 4
     data_period_month = 12 * 4
-    result,label=prediction_preprocess("./ARMA/",data_period_month,forecast_gap_month,label_period_month)
+    result,label=prediction_preprocess("./ARIMA/",data_period_month,forecast_gap_month,label_period_month)
