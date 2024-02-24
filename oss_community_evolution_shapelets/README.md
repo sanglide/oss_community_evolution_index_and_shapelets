@@ -20,12 +20,12 @@ You need `Python 3.9`, `R`, and `RStudio` to run the code.
 
 ### Shapelets mining and prediction
 
-- Set the threshold of community matching used for existing approach in `global_settings.py`, e.g., `EVOLUTION_PATTERN_THRESHOLD = 0.3`
-- Run main_shapelets.py`
+- Set the threshold of community matching used for existing approach in `global_settings.py`
+- Run `main_shapelets.py`
 - Find the results in the auto-generated subfolder under `result/`
 
 ### Prediction of ARIMA model
 
-- Run `ARMA.py`
+- Run `ARIMA.py`
 
-- Find the results in the auto-generated subfolder `ARMA\`. 
+- Find the results in the auto-generated subfolder `ARIMA\`. 
