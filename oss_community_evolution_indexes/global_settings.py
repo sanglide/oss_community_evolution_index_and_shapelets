@@ -26,18 +26,17 @@ failProjL = ['facebookincubator_create-react-app', 'jcjohnson_neural-style', 'an
              'jessesquires_JSQMessagesViewController', 'kevinzhow_PNChart', 'JakeWharton_ActionBarSherlock',
              'onevcat_VVDocumenter-Xcode', 'Compass_compass']
 
-# 'thoughtbot_paperclip', is deprecated
 
 EVOLUTION_PATTERN_THRESHOLD = 0.1
 
 SOURCE_DATA_PATH = "./data/chosenProjData.csv"  # data source used for FSE submission
-# NEW_DATA_DIR = "/home/wangliang/workspace/data_collection/generateCSV/data/"
 NEW_DATA_DIR = "./data/"
 
+# True: perform community evolution analysis for the two hundred projects in the evaluation set
+# False: perform community evolution analysis for the thirty-two projects in the example set
 USE_NEW_DATA = False
 
 CORRELATION_METHOD = "spearman"
-# 'pearson','spearman',"bonferroni","FDR"
 
 # 0: math.log(dc[key] + 1, math.e)
 # 1: 1
